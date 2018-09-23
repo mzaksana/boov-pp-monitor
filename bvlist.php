@@ -46,12 +46,13 @@
       var head = "<table id=\"table-recplist\" class=\"table table-hover\">";
       head+= "<thead>";
       head+= "<tr>";
-      head+= "<th width=\"15%\">Instagram UID</th>";
+      head+= "<th width=\"10%\">Instagram UID</th>";
       head+= "<th width=\"25%\">Username</th>";
       head+= "<th width=\"15%\">Status</th>";
-      head+= "<th width=\"45%\">Post link</th>";
+      head+= "<th width=\"15%\">Waktu Posting</th>";
+      head+= "<th width=\"35%\">Post link</th>";
       head+= "</tr>";
-      head+= "</thead>";
+      head+= "</thead>\n";
       return head;
     }
 
@@ -85,10 +86,13 @@
               list+="<td><a href=\"https://www.instagram.com/"+username+"/\" target=\"_blank\">"+username+"</td>";
               if (monitorStatus[x]['posted']){
                 var shortcode = monitorStatus[x]['shortcode'];
+                var postTime = monitorStatus[x]['postTime'];
                 list+="<td style=\"color:#00bb00\"><strong>SUDAH POSTING</strong></td>";
-                list+="<td style=\"font-family:monospace;\"><a href=\"https://www.instagram.com/p/"+shortcode+"/\" target=\"_blank\">https://www.instagram.com/p/"+shortcode+"</td>";
+                list+="<td>"+postTime+"</td>";
+                list+="<td style=\"font-family:monospace;\"><a href=\"https://www.instagram.com/p/"+shortcode+"/\" target=\"_blank\">https://www.instagram.com/p/"+shortcode+"/</td>";
               } else {
                 list+="<td style=\"color:#bb0000\"><strong>BELUM POSTING</strong></td>";
+                list+="<td>-</td>";
                 list+="<td style=\"font-family:monospace;\">-</td>";
               }
               list+="</tr>\n";
@@ -163,10 +167,11 @@
                                     <table id="table-recplist" class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th width="15%">Instagram UID</th>
+                                                <th width="10%">Instagram UID</th>
                                                 <th width="25%">Username</th>
                                                 <th width="15%">Status</th>
-                                                <th width="45%">Post link</th>
+                                                <th width="15%">Waktu Posting</th>
+                                                <th width="35%">Post link</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -174,7 +179,7 @@
                                 <div id="loading-list-panel" class="panel-body text-center" style="display:none;">
                                   <h3>Loading...</h3>
                                   <img src="loadanim.svg" alt="Loading...">
-                                  <br/>
+                                  <br/><br />
                                 </div>
                             </div>
 

@@ -75,6 +75,7 @@
     foreach ($monlist as $user){
       $user['posted'] = false;
       $user['shortcode'] = "";
+      $user['postTime'] = "";
       $monresult[] = $user;
     }
     // Iterasikan semua posts yg masuk
@@ -84,8 +85,10 @@
       foreach ($monresult as $user){
         if ($user['id'] == $id){
           $shortcode = $post->shortcode;
+          $post_time = (int)$post->taken_at_timestamp;
           $monresult[$x]['posted'] = true;
           $monresult[$x]['shortcode'] = $shortcode;
+          $monresult[$x]['postTime'] = date("Y-m-d H:i:s", $post_time);
           $postedcnt++;
           break;
         }
