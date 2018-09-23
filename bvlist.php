@@ -64,6 +64,9 @@
         $('#main-list-panel').hide();
         $('#loading-list-panel').show();
         var hashtag = $(this).val();
+        if (hashtag == ""){
+          return;
+        }
         $.ajax({
           url: 'bvfetchjson.php?hashtag='+hashtag,
           success: function(result){
@@ -141,6 +144,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                   <select id="hashtag-input" type="text" class="form-control" name="hashtag">
+                                    <option value="">- Pilih Hashtag -</option>
                                     <?php
                                     $fh = fopen("bv_hashtags.txt", "r");
                                     if ($fh) {
