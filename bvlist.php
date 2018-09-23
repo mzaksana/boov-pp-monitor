@@ -61,49 +61,48 @@
     }
 
     $(document).ready(function(){
-      $("#hashtag-input").on("input", function(){
-        $('#main-list-panel').hide();
-        $('#loading-list-panel').show();
+      $("#hashtag-input").on("change", function(){
         var hashtag = $(this).val();
-        if (hashtag == ""){
-          return;
-        }
-        $.ajax({
-          url: 'bvfetchjson.php?hashtag='+hashtag,
-          success: function(result){
-            var head = bvListHead();
-            var foot = bvListFoot();
-            var list = "";
-            var decoded = JSON.parse(result);
-            var userCount = decoded["userCount"];
-            var postCount = decoded["postCount"];
-            var userThatPosted = decoded["userThatPosted"];
-            var monitorStatus = decoded["monitorStatus"];
-            for (var x=0; x<monitorStatus.length; x++){
-              list+="<tr>";
-              list+="<td style=\"font-family:monospace;\">"+monitorStatus[x]['id']+"</td>";
-              var username = monitorStatus[x]['username'];
-              list+="<td><a href=\"https://www.instagram.com/"+username+"/\" target=\"_blank\">"+username+"</td>";
-              if (monitorStatus[x]['posted']){
-                var shortcode = monitorStatus[x]['shortcode'];
-                var postTime = monitorStatus[x]['postTime'];
-                list+="<td style=\"color:#00bb00\"><strong>SUDAH POSTING</strong></td>";
-                list+="<td>"+postTime+"</td>";
-                list+="<td style=\"font-family:monospace;\"><a href=\"https://www.instagram.com/p/"+shortcode+"/\" target=\"_blank\">https://www.instagram.com/p/"+shortcode+"/</td>";
-              } else {
-                list+="<td style=\"color:#bb0000\"><strong>BELUM POSTING</strong></td>";
-                list+="<td>-</td>";
-                list+="<td style=\"font-family:monospace;\">-</td>";
+        if (!(hashtag == "")){
+          $('#main-list-panel').hide();
+          $('#loading-list-panel').show();
+          $.ajax({
+            url: 'bvfetchjson.php?hashtag='+hashtag,
+            success: function(result){
+              var head = bvListHead();
+              var foot = bvListFoot();
+              var list = "";
+              var decoded = JSON.parse(result);
+              var userCount = decoded["userCount"];
+              var postCount = decoded["postCount"];
+              var userThatPosted = decoded["userThatPosted"];
+              var monitorStatus = decoded["monitorStatus"];
+              for (var x=0; x<monitorStatus.length; x++){
+                list+="<tr>";
+                list+="<td style=\"font-family:monospace;\">"+monitorStatus[x]['id']+"</td>";
+                var username = monitorStatus[x]['username'];
+                list+="<td><a href=\"https://www.instagram.com/"+username+"/\" target=\"_blank\">"+username+"</td>";
+                if (monitorStatus[x]['posted']){
+                  var shortcode = monitorStatus[x]['shortcode'];
+                  var postTime = monitorStatus[x]['postTime'];
+                  list+="<td style=\"color:#00bb00\"><strong>SUDAH POSTING</strong></td>";
+                  list+="<td>"+postTime+"</td>";
+                  list+="<td style=\"font-family:monospace;\"><a href=\"https://www.instagram.com/p/"+shortcode+"/\" target=\"_blank\">https://www.instagram.com/p/"+shortcode+"/</td>";
+                } else {
+                  list+="<td style=\"color:#bb0000\"><strong>BELUM POSTING</strong></td>";
+                  list+="<td>-</td>";
+                  list+="<td style=\"font-family:monospace;\">-</td>";
+                }
+                list+="</tr>\n";
               }
-              list+="</tr>\n";
+              var info_str = "Ditemukan <strong>"+postCount+" postingan</strong>. Memonitor <strong>"+userCount+" pengguna</strong> dan <strong>"+userThatPosted+" telah diposting</strong> oleh pengguna yang dimonitor.";
+              $("#panel-info").html(info_str);
+              $('#main-list-panel').html(head+list+foot);
+              $('#loading-list-panel').hide();
+              $('#main-list-panel').show();
             }
-            var info_str = "Ditemukan <strong>"+postCount+" postingan</strong>. Memonitor <strong>"+userCount+" pengguna</strong> dan <strong>"+userThatPosted+" telah diposting</strong> oleh pengguna yang dimonitor.";
-            $("#panel-info").html(info_str);
-            $('#main-list-panel').html(head+list+foot);
-            $('#loading-list-panel').hide();
-            $('#main-list-panel').show();
-          }
-        })
+          });
+        }
       });
     });
   </script>
