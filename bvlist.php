@@ -73,6 +73,7 @@
               var foot = bvListFoot();
               var list = "";
               var decoded = JSON.parse(result);
+              var hashtag = decoded["hashtag"];
               var userCount = decoded["userCount"];
               var postCount = decoded["postCount"];
               var userThatPosted = decoded["userThatPosted"];
@@ -95,7 +96,7 @@
                 }
                 list+="</tr>\n";
               }
-              var info_str = "Ditemukan <strong>"+postCount+" postingan</strong>. Memonitor <strong>"+userCount+" pengguna</strong> dan <strong>"+userThatPosted+" telah diposting</strong> oleh pengguna yang dimonitor.";
+              var info_str = "Dari hashtag <strong>#"+hashtag+"</strong>, ditemukan <strong>"+postCount+" postingan</strong>. Memonitor <strong>"+userCount+" pengguna</strong> dan <strong>"+userThatPosted+" telah diposting</strong> oleh pengguna yang dimonitor.";
               $("#panel-info").html(info_str);
               $('#main-list-panel').html(head+list+foot);
               $('#loading-list-panel').hide();

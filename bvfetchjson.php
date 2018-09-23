@@ -34,6 +34,7 @@
   $posts = fetchHastagPostList($hashtag);
   $monstatus = compareMonitorStatus($monlist,$posts,$postedcnt);
   $data = array(
+    'hashtag' => $hashtag,
     'userCount' => count($monlist),
     'postCount' => count($posts),
     'userThatPosted' => $postedcnt,
