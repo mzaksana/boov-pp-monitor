@@ -88,7 +88,7 @@
           $post_time = (int)$post->taken_at_timestamp;
           $monresult[$x]['posted'] = true;
           $monresult[$x]['shortcode'] = $shortcode;
-          $monresult[$x]['postTime'] = date("Y-m-d H:i:s", $post_time);
+          $monresult[$x]['postTime'] = gmdate("Y-m-d H:i:s", $post_time+(3600*7));
           $postedcnt++;
           break;
         }
