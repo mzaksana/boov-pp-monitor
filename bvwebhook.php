@@ -115,7 +115,7 @@
           $userCount = $monData->userCount;
           $postCount = $monData->postCount;
           $userThatPosted = $monData->userThatPosted;
-          $pesan[] = array(
+          /*$pesan[] = array(
             'type' => 'template',
             'altText' => "Results for #$hashtag",
             'template' => array(
@@ -140,7 +140,8 @@
                 )
               )
             )
-          );
+          );*/
+          $pesan[] = "Dari hashtag #$hashtag, ditemukan $postCount post, $userThatPosted dipost dari $userCount pengguna dimonitor";
         } else {
           $pesan = "Gagal mendapatkan data untuk hashtag #$hashtag !";
         }
