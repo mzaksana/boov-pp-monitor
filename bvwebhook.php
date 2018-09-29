@@ -120,8 +120,8 @@
             'altText' => "Results for #$hashtag",
             'template' => array(
               'type' => 'buttons',
-              'title' => '#$hashtag',
-              'text' => "Ditemukan $postCount post, $userThatPosted dipost dari $userCount pengguna dimonitor",
+              //'title' => '#$hashtag',
+              'text' => "Dari hashtag #$hashtag, ditemukan $postCount post, $userThatPosted dipost dari $userCount pengguna dimonitor",
               'actions' => array(
                 array(
                   'type' => 'message',
