@@ -149,7 +149,7 @@
       if (substr($cmd,0,7) == "!posted"){
         // Listkan siapa yg sudah posting
         $param = explode(' ',$cmd);
-        $monData = getCachedMonData($param[1]);
+        $monData = getCachedMonData(trim($param[1]));
         if ($monData){
           $hashtag = $monData->hashtag;
           foreach ($monData->monitorStatus as $user){
@@ -164,7 +164,7 @@
               $msg.="$x. $usr\n";
             }
           } else {
-            $msg = "Tidak ditemukan pengguna termonitor yang mengepost #$hashtag !"
+            $msg = "Tidak ditemukan pengguna termonitor yang mengepost #$hashtag !";
           }
           $pesan[] = $msg;
         } else {
@@ -174,7 +174,7 @@
       if (substr($cmd,0,7) == "!nopost"){
         // Listkan siapa yg belum posting
         $param = explode(' ',$cmd);
-        $monData = getCachedMonData($param[1]);
+        $monData = getCachedMonData(trim($param[1]));
         if ($monData){
           $hashtag = $monData->hashtag;
           foreach ($monData->monitorStatus as $user){
@@ -189,7 +189,7 @@
               $msg.="$x. $usr\n";
             }
           } else {
-            $msg = "Tidak ditemukan pengguna termonitor yang tidak mengepost #$hashtag !"
+            $msg = "Tidak ditemukan pengguna termonitor yang tidak mengepost #$hashtag !";
           }
           $pesan[] = $msg;
         } else {
