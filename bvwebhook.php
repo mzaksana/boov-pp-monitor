@@ -238,8 +238,6 @@
           "* Anda malas cari foto yang cocok? Gunakan foto profil LINE kamu dengan mengetik perintah !dp ",
           "Apabila ada masalah atau ingin kepo tentang bot ini? Ketik \"about\"."
         );
-      } else {
-        $pesan = "Ketik \"info\" untuk mendapatkan informasi tentang bot ini!";
       }
     }
     return $pesan;
