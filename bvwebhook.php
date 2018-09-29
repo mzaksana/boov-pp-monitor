@@ -162,6 +162,7 @@
             $x=1;
             foreach ($list as $usr){
               $msg.="$x. $usr\n";
+              $x++;
             }
           } else {
             $msg = "Tidak ditemukan pengguna termonitor yang mengepost #$hashtag !";
@@ -187,6 +188,7 @@
             $x=1;
             foreach ($list as $usr){
               $msg.="$x. $usr\n";
+              $x++;
             }
           } else {
             $msg = "Tidak ditemukan pengguna termonitor yang tidak mengepost #$hashtag !";
