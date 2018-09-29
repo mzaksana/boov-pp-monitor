@@ -132,12 +132,12 @@
                   'type' => 'message',
                   'label' => 'List belum post',
                   'text' => '!nopost '.$fetchId
-                )/*,
+                ),
                 array(
                   'type' => 'message',
-                  'label' => 'Info',
-                  'text' => 'about'
-                )*/
+                  'label' => 'Update ulang',
+                  'text' => '#'.$hashtag
+                )
               )
             )
           );
