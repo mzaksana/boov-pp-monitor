@@ -132,12 +132,12 @@
                   'type' => 'message',
                   'label' => 'List belum post',
                   'text' => '!nopost '.$fetchId
-                ),
+                )/*,
                 array(
                   'type' => 'message',
                   'label' => 'Info',
-                  'text' => 'info'
-                )
+                  'text' => 'about'
+                )*/
               )
             )
           );
@@ -225,7 +225,7 @@
             )
           )
         );
-      } else
+      }/* else
       if ($cmd == "info"){
         $nama = get_nickname($source['userId']);
         $pesan = array(
@@ -238,7 +238,7 @@
           "* Anda malas cari foto yang cocok? Gunakan foto profil LINE kamu dengan mengetik perintah !dp ",
           "Apabila ada masalah atau ingin kepo tentang bot ini? Ketik \"about\"."
         );
-      }
+      }*/
     }
     return $pesan;
   }
