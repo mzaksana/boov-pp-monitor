@@ -49,7 +49,11 @@
         break;
       }
     }
-    return $media_posts;
+    if (isset($media_posts)){
+      return $media_posts;
+    } else {
+      return NULL;
+    }
   }
 
   function loadMonitorList($monlistfile){
@@ -79,20 +83,22 @@
       $monresult[] = $user;
     }
     // Iterasikan semua posts yg masuk
-    foreach ($posts as $post){
-      $id = $post->owner->id;
-      $x = 0;
-      foreach ($monresult as $user){
-        if ($user['id'] == $id){
-          $shortcode = $post->shortcode;
-          $post_time = (int)$post->taken_at_timestamp;
-          $monresult[$x]['posted'] = true;
-          $monresult[$x]['shortcode'] = $shortcode;
-          $monresult[$x]['postTime'] = gmdate("Y-m-d H:i:s", $post_time+(3600*7));
-          $postedcnt++;
-          break;
+    if ($posts != NULL){
+      foreach ($posts as $post){
+        $id = $post->owner->id;
+        $x = 0;
+        foreach ($monresult as $user){
+          if ($user['id'] == $id){
+            $shortcode = $post->shortcode;
+            $post_time = (int)$post->taken_at_timestamp;
+            $monresult[$x]['posted'] = true;
+            $monresult[$x]['shortcode'] = $shortcode;
+            $monresult[$x]['postTime'] = gmdate("Y-m-d H:i:s", $post_time+(3600*7));
+            $postedcnt++;
+            break;
+          }
+          $x++;
         }
-        $x++;
       }
     }
     return $monresult;

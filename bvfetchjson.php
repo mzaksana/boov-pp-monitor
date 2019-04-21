@@ -32,11 +32,16 @@
 
   $monlist = loadMonitorList("bv_monitorlist.txt");
   $posts = fetchHastagPostList($hashtag);
+  if ($posts != NULL){
+    $postCount = count($posts);
+  } else {
+    $postCount = 0;
+  }
   $monstatus = compareMonitorStatus($monlist,$posts,$postedcnt);
   $data = array(
     'hashtag' => $hashtag,
     'userCount' => count($monlist),
-    'postCount' => count($posts),
+    'postCount' => $postCount,
     'userThatPosted' => $postedcnt,
     'monitorStatus' => $monstatus
   );
